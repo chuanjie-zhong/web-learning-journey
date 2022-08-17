@@ -35,21 +35,27 @@
 
 //自己实现深拷贝的方法  （递归拷贝，要一层层拷贝）
 // 掌握类型判断 typeof instanceof Object.prototype.toString.call constructor
-function deepClone(obj) {
+function deepClone(obj,hash=new WeakMap()) {
     if(obj==null) return obj;
     if(obj instanceof Date) return new Date(obj);
     if(obj instanceof RegExp) return new RegExp(obj);
     if(typeof obj !=='object') return obj;
     //要不是数组，要不是对象
+    if(hash.has(obj)) return hash.get(obj);// 如果weakMap中有这个对象就直接返回
     let cloneObj = new obj.constructor;
+    //如果是对象把他放在weakMap中，如果再拷贝这个对象，这个对象就已经存在，直接返回这个对象即可
+    hash.set(obj,cloneObj);
    for (const key in obj) {
-    if (Object.hasOwnProperty.call(obj, key)) {
-       cloneObj[key] = deepClone(obj[key]);
+      // 实现深拷贝
+    if (obj.hasOwnProperty(key)) {
+      // 如果赋予的值是对象，我们就把这个对象放到weakMap中
+       cloneObj[key] = deepClone(obj[key],hash);
     }
    }
    return cloneObj;
 }
 let obj = {age:18,couter:{con:11}}
+obj.xxx = obj;
 const newObj = deepClone(obj)
 obj.couter.con=222
 console.log(obj)
