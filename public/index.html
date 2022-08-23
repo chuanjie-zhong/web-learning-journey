@@ -7,18 +7,18 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="app">
+        <p>{{name}}</p>
+        <span>{{age}}</span>
+    </div>
     <script src="/dist/umd/vue.js"></script>
     <script>
         let vm = new Vue({
             el:'#app',
             data(){
-                return {name:'zcj',age:18,address:{
-                    name:'lsy'
-                }}
+                return {name:'zcj',age:18}
             }
         })
-        vm._data.name='zzz'
-        console.log(vm._data)
     </script>
 </body>
 </html>
