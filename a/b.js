@@ -1,1 +1,0 @@
-console.log('文件夹A')
