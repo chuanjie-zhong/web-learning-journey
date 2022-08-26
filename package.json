@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "commander": "^9.4.0"
+  },
+  "devDependencies": {
+    "ejs": "^3.1.8"
+  }
+}
