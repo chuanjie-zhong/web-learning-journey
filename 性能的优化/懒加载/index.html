@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .container{
+            width: 500px;
+            height: 1000px;
+            display: flex;
+            flex-flow: column;
+        }
+        img{
+            height: 200px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="loading.gif" data-src="./th.jpg" />
+      <img src="loading.gif" data-src="./th.jpg" />
+      <img src="loading.gif" data-src="./th.jpg" />
+      <img src="loading.gif" data-src="./th.jpg" />
+      <img src="loading.gif" data-src="./th.jpg" />
+      <img src="loading.gif" data-src="./th.jpg" />
+    </div>
+    <script>
+      /**
+       * 知识点：
+       * 1) window.innerHeight 是浏览器可视区的高度
+       * 2) document.body.scrollTop || document.documentElement.scrollTop  是浏览器滚动过得距离
+       * 3) imgs.offsetTop 是元素顶部距离文档顶部的高度(包括滚动条的距离)
+       * 4) 图片加载条件：img.offsetTop < window.innerHeight + document.body.scrollTop
+       */
+      var imgs = document.querySelectorAll("img");
+      function lozyLoad() {
+        console.log(111)
+        var scrollTop =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        var winHeight = window.innerHeight;
+        for (var i = 0; i < imgs.length; i++) {
+            console.log(i)
+          if (imgs[i].offsetTop < scrollTop + winHeight) {
+            console.log(true)
+            imgs[i].src = imgs[i].getAttribute("data-src");
+          }
+        }
+      }
+      window.onscroll = lozyLoad();
+    </script>
+  </body>
+</html>
