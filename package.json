@@ -1,0 +1,23 @@
+{
+  "name": "web-learning-journey",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chuanjie-zhong/web-learning-journey.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chuanjie-zhong/web-learning-journey/issues"
+  },
+  "homepage": "https://github.com/chuanjie-zhong/web-learning-journey#readme",
+  "dependencies": {
+    "@types/node": "^18.7.14"
+  }
+}
